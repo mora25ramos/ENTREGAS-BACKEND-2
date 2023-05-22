@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Carrito de Compras</title>
+  <style>
+    /* Agregar estilos CSS para el carrito de compras */
+    /* ... */
+  </style>
+</head>
+<body>
+  <h1>Carrito de Compras</h1>
+
+  {{#if carrito.length}}
+    <table>
+      <thead>
+        <tr>
+          <th>Producto</th>
+          <th>Cantidad</th>
+          <th>Precio Unitario</th>
+          <th>Subtotal</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each carrito}}
+          <tr>
+            <td>{{this.producto.nombre}}</td>
+            <td>{{this.cantidad}}</td>
+            <td>{{this.producto.precio}}</td>
+            <td>{{this.subtotal}}</td>
+            <td><a href="/carrito/remove/{{this.producto._id}}">Eliminar</a></td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+    <p>Total: {{total}}</p>
+    <a href="/carrito/checkout">Finalizar Compra</a>
+  {{else}}
+    <p>No hay productos en el carrito.</p>
+  {{/if}}
+  
+</body>
+</html>
